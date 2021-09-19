@@ -1,0 +1,225 @@
+<h2 mat-dialog-title>{{ data?.title }}</h2>
+<mat-dialog-content>
+    <div class="modal-form">
+        <form [formGroup]="internForm.baseForm">
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="nombre" matInput placeholder="Nombre" required />
+
+                <mat-error *ngIf="checkField('nombre')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input" *ngIf="showCiPasswordField">
+                <input formControlName="ci" matInput placeholder="Cedula" required />
+
+                <mat-error *ngIf="checkField('ci')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width-input" appearance="fill">
+                <mat-label>Ingreso a Viamatica</mat-label>
+                <input formControlName="ingresoViamatica" matInput [matDatepicker]="ingresoViamatica" required>
+
+                <mat-datepicker-toggle matSuffix [for]="ingresoViamatica">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #ingresoViamatica></mat-datepicker>
+
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width-input" appearance="fill">
+                <mat-label>Ingreso a Pasantias</mat-label>
+                <input formControlName="ingresoPracticas" matInput [matDatepicker]="ingresoPracticas" required>
+                <mat-datepicker-toggle matSuffix [for]="ingresoPracticas">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #ingresoPracticas></mat-datepicker>
+
+
+
+            </mat-form-field>
+
+
+
+            <mat-form-field class="full-width-input" appearance="fill">
+                <mat-label>Egreso a Pasantias</mat-label>
+                <input formControlName="egresoPracticas" matInput [matDatepicker]="egresoPracticas" required>
+                <mat-datepicker-toggle matSuffix [for]="egresoPracticas">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #egresoPracticas></mat-datepicker>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="lider" matInput placeholder="Lider" required />
+
+
+                <mat-error *ngIf="checkField('lider')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="celular" matInput placeholder="Celular" required />
+
+                <mat-error *ngIf="checkField('celular')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="correo" matInput placeholder="Correo" required/>
+                <mat-error *ngIf="checkField('correo')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <mat-label>Semestre</mat-label>
+                <mat-select formControlName="semestre" required>
+                    <mat-option value="quinto">Quinto</mat-option>
+                    <mat-option value="sexto">Sexto</mat-option>
+                    <mat-option value="septimo">Septimo</mat-option>
+                    <mat-option value="octavo">Octavo</mat-option>
+                    <mat-option value="noveno">Noveno</mat-option>
+                    <mat-option value="decimo">Decimo</mat-option>
+                    <mat-option value="egresado">Egresado</mat-option>
+                </mat-select>
+                <mat-error *ngIf="checkField('semestre')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+            </mat-form-field>
+
+
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="sector" matInput placeholder="Sector" />
+                <mat-error *ngIf="checkField('sector')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="avance" matInput placeholder="Avance" />
+
+                <mat-error *ngIf="checkField('avance')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="disponibilidad" matInput placeholder="Disponibilidad" />
+
+                <mat-error *ngIf="checkField('disponibilidad')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="observacion" matInput placeholder="Observacion" />
+
+                <mat-error *ngIf="checkField('observacion')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width-input">
+                <mat-label>Almuerzo</mat-label>
+                <mat-select formControlName="almuerzo" required>
+                    <mat-option value="si">Si</mat-option>
+                    <mat-option value="no">No</mat-option>
+                </mat-select>
+
+                <mat-error *ngIf="checkField('almuerzo')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="tecnologia" matInput placeholder="Tecnologia" />
+
+                <mat-error *ngIf="checkField('tecnologia')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="universidad" matInput placeholder="Universidad" required />
+
+                <mat-error *ngIf="checkField('universidad')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="carrera" matInput placeholder="Carrera" required />
+                <mat-error *ngIf="checkField('carrera')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <mat-label>Pasantias</mat-label>
+                <mat-select formControlName="tipoPasantias" required>
+                    <mat-option value="virtuales">Virtuales</mat-option>
+                    <mat-option value="presenciales">Presenciales</mat-option>
+                    <mat-option value="mixto">Mixto</mat-option>
+                </mat-select>
+
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="horario" matInput placeholder="Horario" />
+
+                <mat-error *ngIf="checkField('horario')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="proyecto" matInput placeholder="Proyecto" />
+
+                <mat-error *ngIf="checkField('proyecto')">
+                    {{ internForm.errorMessage }}
+                </mat-error>
+            </mat-form-field>
+
+
+        </form>
+    </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button [mat-dialog-close]="true" color="primary" (click)="onSavePasante()" ckdFocusInitial [disabled]="!internForm.baseForm.valid">
+    Save
+  </button>
+</mat-dialog-actions>

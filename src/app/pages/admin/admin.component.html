@@ -1,0 +1,175 @@
+<div class="table-button-row">
+
+    <mat-form-field name="filterBy" class="example-full-width">
+        <mat-label>Filter</mat-label>
+        <input (input)="filter = $event.target.value" matInput>
+    </mat-form-field>
+
+
+
+
+    <button (click)="filterByName()" mat-flat-button color="primary" class="btn-filter">
+    By Name
+</button>
+
+    <button (click)="filterByProject()" mat-flat-button color="primary" class="btn-filter">
+    By Project
+</button>
+
+    <button (click)="filterByCi()" mat-flat-button color="primary" class="btn-filter">
+    By CI
+</button>
+
+    <button (click)="ngOnInit()" mat-flat-button color="primary" class="btn-filter">
+    Show All
+</button>
+
+
+</div>
+
+
+<mat-table id="tableInterns" [dataSource]="dataSource" matSort>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="ci">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CI </th>
+        <td mat-cell *matCellDef="let element"> {{element.ci}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ingresoPracticas">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ingreso-Practicas </th>
+        <td mat-cell *matCellDef="let element"> {{element.ingresoPracticas.split("T")[0]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="egresoPracticas">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Egreso-Practicas </th>
+        <td mat-cell *matCellDef="let element"> {{element.egresoPracticas.split("T")[0]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ingresoViamatica">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ingreso-Viamatica </th>
+        <td mat-cell *matCellDef="let element"> {{element.ingresoViamatica.split("T")[0]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lider">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Lider </th>
+        <td mat-cell *matCellDef="let element"> {{element.lider}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="celular">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Celular </th>
+        <td mat-cell *matCellDef="let element"> {{element.celular}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="correo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="semestre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Semestre </th>
+        <td mat-cell *matCellDef="let element"> {{element.semestre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sector">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sector </th>
+        <td mat-cell *matCellDef="let element"> {{element.sector}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="avance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Avance </th>
+        <td mat-cell *matCellDef="let element"> {{element.avance}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="disponibilidad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Disponibilidad </th>
+        <td mat-cell *matCellDef="let element"> {{element.disponibilidad}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="observacion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Observacion </th>
+        <td mat-cell *matCellDef="let element"> {{element.observacion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="almuerzo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Almuerzo </th>
+        <td mat-cell *matCellDef="let element"> {{element.almuerzo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tecnologia">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tecnologia </th>
+        <td mat-cell *matCellDef="let element"> {{element.tecnologia}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="universidad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Universidad </th>
+        <td mat-cell *matCellDef="let element"> {{element.universidad}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="carrera">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Carrera </th>
+        <td mat-cell *matCellDef="let element"> {{element.carrera}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoPasantias">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo-Pasantias </th>
+        <td mat-cell *matCellDef="let element"> {{element.tipoPasantias}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="horario">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Horario </th>
+        <td mat-cell *matCellDef="let element"> {{element.horario}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="proyecto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Proyecto </th>
+        <td mat-cell *matCellDef="let element"> {{element.proyecto}} </td>
+    </ng-container>
+
+
+
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+        <td mat-cell *matCellDef="let element">
+            <div class="table-button-row">
+                <button mat-flat-button color="accent" (click)="onOpenModal(element)">
+            Edit
+          </button>
+                <button mat-flat-button color="warn" (click)="onDelete(element.id)">
+            Delete
+          </button>
+            </div>
+        </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true "></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</mat-table>
+
+<div class="table-button-row" align="end">
+
+    <button (click)="onOpenModal()" mat-flat-button color="primary" class="btn-new">
+        Add Intern
+  </button>
+
+    <button (click)="exportExcel()" mat-flat-button class="btn-new-excel">
+      Export Excel
+</button>
+
+
+</div>

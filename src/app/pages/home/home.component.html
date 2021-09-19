@@ -1,0 +1,6 @@
+<div class="welcome-use">
+
+    <h1 *ngIf="(authSvc.user$ | async) as user" align="center">
+        Welcome, {{ user?.username || 'User' }}.
+    </h1>
+</div>
