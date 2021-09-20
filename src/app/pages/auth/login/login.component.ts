@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BaseFormUser } from '@shared/utils/base-form-user';
 import { AuthService } from '@auth/auth.service';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -39,7 +40,15 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (res) {
           this.router.navigate(['']);
         }
+      },
+     
+    (err)=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text:  err.error.message
       })
+    })
     );
   }
 

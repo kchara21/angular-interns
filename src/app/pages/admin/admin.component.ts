@@ -7,6 +7,7 @@ import { ModalAdminComponent } from './components/modal-admin/modal-admin.compon
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import * as XLSX from 'xlsx';
+import Swal from 'sweetalert2';
 
 
 
@@ -40,7 +41,8 @@ export class AdminComponent implements  AfterViewInit, OnInit, OnDestroy {
     
     this.userSvc
     .getAllPasantes()
-    .subscribe((res)=>{
+    .subscribe(
+      (res)=>{
       this.dataSource.data = res;  
     });
   }
@@ -105,7 +107,16 @@ export class AdminComponent implements  AfterViewInit, OnInit, OnDestroy {
           this.userSvc.getAllPasantes().subscribe((interns) => {
             this.dataSource.data = interns;
           });
-        });
+        },
+        (err)=>{
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text:  err.error.message
+          })
+        }
+        
+        );
 
         
         
@@ -127,6 +138,20 @@ export class AdminComponent implements  AfterViewInit, OnInit, OnDestroy {
       // Update result after adding new user.
       this.userSvc.getAllPasantes().subscribe((interns) => {
         this.dataSource.data = interns;
+      },
+      (err)=> {Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text:  err.error.message
+      })}
+      );
+    },
+    
+    err=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text:  err.error.message
       });
     });
   }

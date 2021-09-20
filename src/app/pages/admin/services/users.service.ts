@@ -16,31 +16,31 @@ export class UsersService {
   getAll(): Observable<User[]> {
     return this.http
       .get<User[]>(`${environment.API_URL}/users`)
-      .pipe(catchError(this.handlerError));
+      
   }
 
   getById(userId: number): Observable<User> {
     return this.http
       .get<any>(`${environment.API_URL}/users/${userId}`)
-      .pipe(catchError(this.handlerError));
+      
   }
 
   new(user: User): Observable<User> {
     return this.http
       .post<User>(`${environment.API_URL}/users`, user)
-      .pipe(catchError(this.handlerError));
+      
   }
 
   update(userId: number, user: User): Observable<User> {
     return this.http
       .patch<User>(`${environment.API_URL}/users/${userId}`, user)
-      .pipe(catchError(this.handlerError));
+      
   }
 
   delete(userId: number): Observable<{}> {
     return this.http
       .delete<User>(`${environment.API_URL}/users/${userId}`)
-      .pipe(catchError(this.handlerError));
+      
   }
 
   
@@ -50,28 +50,28 @@ export class UsersService {
   getAllPasantes(): Observable<Pasante[]> {
     return this.http
       .get<Pasante[]>(`${environment.API_URL}/interns`)
-      .pipe(catchError(this.handlerError));
+      
       
   }
 
   getByCiPasante(userCi: string): Observable<Pasante[]> {
     return this.http
       .get<any>(`${environment.API_URL}/interns/ci/${userCi}`)
-      .pipe(catchError(this.handlerError));
+      
   }
 
   
   getByNamePasante(userName: string): Observable<Pasante[]> {
     return this.http
       .get<any>(`${environment.API_URL}/interns/name/${userName}`)
-      .pipe(catchError(this.handlerError));
+      
   }
 
 
   getByProyectPasante(userProyect: string): Observable<Pasante[]> {
     return this.http
       .get<any>(`${environment.API_URL}/interns/project/${userProyect}`)
-      .pipe(catchError(this.handlerError));
+      
   }
 
 
@@ -79,7 +79,7 @@ export class UsersService {
   newPasante(user: Pasante): Observable<Pasante> {
     return this.http
       .post<Pasante>(`${environment.API_URL}/interns`, user)
-      .pipe(catchError(this.handlerError));
+      
   }
 
 
@@ -88,14 +88,14 @@ export class UsersService {
   updatePasante(userId: number, user: Pasante): Observable<Pasante> {
     return this.http
       .put<Pasante>(`${environment.API_URL}/interns/${userId}`, user)
-      .pipe(catchError(this.handlerError));
+      
   }
 
 
   deletePasantes(userId: number): Observable<{}> {
     return this.http
       .delete<Pasante>(`${environment.API_URL}/interns/${userId}`)
-      .pipe(catchError(this.handlerError));
+      
   }
   
 

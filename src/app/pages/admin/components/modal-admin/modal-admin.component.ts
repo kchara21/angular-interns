@@ -46,6 +46,14 @@ export class ModalAdminComponent implements OnInit {
             showConfirmButton: false,
             timer: 1000
           })
+        },
+        err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text:  err.error.message
+          })
+
         });
     }else{
       //edit
@@ -59,6 +67,13 @@ export class ModalAdminComponent implements OnInit {
           timer: 1000
         })
         
+      },
+      err => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text:  err.error.message
+        })
       })
     }
   }
