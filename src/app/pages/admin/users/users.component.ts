@@ -26,12 +26,16 @@ export class UsersComponent implements AfterViewInit, OnInit, OnDestroy {
 
   @ViewChild(MatSort) sort: MatSort;
   constructor(private userSvc: UsersService, private dialog: MatDialog) {
-    this.userSvc.getAll().subscribe((res)=> console.log('User->', res));
+    
   }
 
   ngOnInit(): void {
     this.userSvc.getAll().subscribe((users) => {
       this.dataSource.data = users;
+    },
+    (err)=>{
+      Swal.fire(err.error.message);
+      
     });
   }
 

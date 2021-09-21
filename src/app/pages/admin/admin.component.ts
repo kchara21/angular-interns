@@ -30,7 +30,9 @@ export class AdminComponent implements  AfterViewInit, OnInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('inputFilter') inputFilter: ElementRef;
 
-  constructor(private userSvc: UsersService, private dialog:MatDialog) {}
+  constructor(private userSvc: UsersService, private dialog:MatDialog) {
+   
+  }
 
   private destroy$ = new Subject<any>();
   public filter = "";
@@ -44,7 +46,11 @@ export class AdminComponent implements  AfterViewInit, OnInit, OnDestroy {
     .subscribe(
       (res)=>{
       this.dataSource.data = res;  
-    });
+    },
+    
+        (err)=>{
+          Swal.fire(err.error.message);
+        });
   }
 
 
@@ -53,6 +59,9 @@ export class AdminComponent implements  AfterViewInit, OnInit, OnDestroy {
     .getByCiPasante(this.filter)
     .subscribe((res)=> {
       this.dataSource.data = res;
+    },
+    (err)=>{
+      Swal.fire(err.statusText);
     }
     );
   }
@@ -62,6 +71,9 @@ export class AdminComponent implements  AfterViewInit, OnInit, OnDestroy {
     .getByNamePasante(this.filter)
     .subscribe((res)=> {
       this.dataSource.data = res;
+    },
+    (err)=>{
+      Swal.fire(err.statusText);
     }
     );
   }
@@ -71,6 +83,9 @@ export class AdminComponent implements  AfterViewInit, OnInit, OnDestroy {
     .getByProyectPasante(this.filter)
     .subscribe((res)=> {
       this.dataSource.data = res;
+    },
+    (err)=>{
+      Swal.fire(err.statusText);
     }
     );
   }
@@ -139,11 +154,10 @@ export class AdminComponent implements  AfterViewInit, OnInit, OnDestroy {
       this.userSvc.getAllPasantes().subscribe((interns) => {
         this.dataSource.data = interns;
       },
-      (err)=> {Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text:  err.error.message
-      })}
+      
+      (err)=> {
+        console.log(err);
+       }
       );
     },
     
